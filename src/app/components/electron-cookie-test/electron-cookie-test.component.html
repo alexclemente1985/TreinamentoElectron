@@ -1,0 +1,24 @@
+<h4>Cookie setter</h4>
+<div>
+    <p>Enter github user name</p>
+    <input type="text" #endpoint_text placeholder="api endpoint" value="{{username}}"><br>
+    <button (click)="update(endpoint_text)">update</button>
+</div>
+
+<div>
+    <h4>Output</h4>
+    <img src="{{avatar_url}}" alt="avatar" width="128" height="128"><br>
+    <textarea id="myTextArea" cols=120 rows=10>
+        {{output}}
+    </textarea>
+
+</div>
+
+
+<div>
+    <h4>Show Cookie</h4>
+    <button (click)="showCookie()">reload</button><br>
+    <textarea id="myTextArea" cols=120 rows=10>
+        {{cookieData}}
+    </textarea>
+</div>

@@ -1,6 +1,8 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const { ipcMain } = require("electron");
+const { session } = require("electron");
 
 const createWindow = () => {
   // Create the browser window.
@@ -8,7 +10,8 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
 
@@ -39,5 +42,31 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+ipcMain.on("get-cookie-sync", (event, arg) => {
+  //get cookie based on arg
+
+  session.defaultSession.cookies
+    .get(arg)
+    .then((cookies) => {
+      event.returnValue =cookies
+    })
+    .catch((error) => {
+      console.log(error)
+      event.returnValue=undefined
+    });
+
+});
+
+
+ipcMain.on("set-cookie-sync", (event, arg) => {
+  //get cookie based on arg
+  session.defaultSession.cookies.set(arg)
+  .then(() => {
+    // success
+    event.returnValue =true
+  }, (error) => {
+    console.error(error)
+    event.returnValue =false
+  })
+
+});
