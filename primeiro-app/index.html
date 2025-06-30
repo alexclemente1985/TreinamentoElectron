@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta
+            http-equiv="X-Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+        />
+        <title>Primeiro app electron</title>
+    </head>
+    <body>
+        <h1>Hello Worldi!</h1>
+        Usando Node.js <span id="node-version"></span>,
+        Chromium <span id="chrome-version"></span>,
+        e Electron <span id="electron-version"></span>.
+
+        <button id="button">Mostrar nome</button>
+        <strong id="text"></strong>
+    </body>
+    <script src="./renderer.js"></script>
+</html>
