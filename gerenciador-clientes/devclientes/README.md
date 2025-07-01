@@ -32,3 +32,10 @@ $ npm run build:mac
 # For Linux
 $ npm run build:linux
 ```
+
+### Project Creation
+
+```bash
+$ npm create @quick-start/electron@latest
+```
+
