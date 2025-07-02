@@ -3,6 +3,8 @@ import path from "node:path"
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { createFileRoute, createURLRoute } from 'electron-router-dom'
+import {createTray} from './tray'
+import './ipc'
 
 function createWindow(): void {
   // Create the browser window.
@@ -12,7 +14,7 @@ function createWindow(): void {
     show: false,
     autoHideMenuBar: true,
     backgroundColor: "#030712",
-    ...(process.platform === 'linux' ? { 
+    ...(process.platform === 'linux' ? {
       icon: join(__dirname,"../../build/icon.png")
      } : process.platform === 'win32' && {
       icon: join(__dirname, "resource", "icon.png")
@@ -22,6 +24,8 @@ function createWindow(): void {
       sandbox: false
     }
   })
+
+  createTray(mainWindow)
 
   if(process.platform === 'darwin'){
     const iconPath = path.resolve(__dirname, "resource", "icon.png")

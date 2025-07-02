@@ -1,8 +1,28 @@
-import { contextBridge } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
+import { contextBridge, ipcRenderer } from 'electron'
+import { electronAPI, ElectronAPI } from '@electron-toolkit/preload'
 
+declare global {
+  export interface Window{
+    electron: ElectronAPI;
+    api: typeof api;
+  }
+}
 // Custom APIs for renderer
-const api = {}
+const api = {
+  //recebe uma função que se desejável de ser disparada pelo ipcRenderer
+  // útil para acionar páginas via traymenu
+  onNewCustomer: (callback: ()=>void)=>{
+    ipcRenderer.on("new-customer", callback)
+
+    return () => {
+      ipcRenderer.off("new-customer", callback)
+    }
+  },
+  //INVOKE -> permite enviar e receber informações
+  fetchUsers: ()=> {
+    return ipcRenderer.invoke("fetch-users")
+  }
+}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
