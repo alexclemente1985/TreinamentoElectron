@@ -3,6 +3,7 @@ import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import {viteStaticCopy} from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,6 +28,14 @@ export default defineConfig({
         ? undefined
         : {},
     }),
+    viteStaticCopy({
+      targets:[
+        {
+          src: './resources/*',
+          dest: 'resources'
+        }
+      ]
+    })
   ],
   server:{
     watch:{
