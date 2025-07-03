@@ -5,6 +5,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { createFileRoute, createURLRoute } from 'electron-router-dom'
 import {createTray} from './tray'
 import './ipc'
+import './store'
 
 function createWindow(): void {
   // Create the browser window.
@@ -32,7 +33,8 @@ function createWindow(): void {
     app.dock?.setIcon(iconPath);
   }
   mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
+    mainWindow.show();
+    mainWindow.webContents.openDevTools();
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
