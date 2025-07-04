@@ -1,4 +1,4 @@
-appId: com.electron.app
+appId: com.acpprojects.app
 productName: devclientes
 directories:
   buildResources: build
@@ -33,11 +33,12 @@ linux:
     - AppImage
     - snap
     - deb
-  maintainer: electronjs.org
+    - rpm
+    - freebsb
+    - pacman
+  maintainer: acpprojects
+  synopsis: ${description}
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
-publish:
-  provider: generic
-  url: https://example.com/auto-updates

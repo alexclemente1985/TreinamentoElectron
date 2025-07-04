@@ -1,4 +1,4 @@
-import { ipcMain, IpcMain } from "electron";
+import { ipcMain, app } from "electron";
 
 // handle -> comunicação bi-direcional
 ipcMain.handle("fetch-users", ()=>{
@@ -10,4 +10,8 @@ ipcMain.handle("fetch-users", ()=>{
         {id: 3, nome: "Liu Kenga"},
         {id: 4, nome: "Shão Tsunga"},
     ]
+})
+
+ipcMain.handle("app-version", ()=>{
+    return app.getVersion();
 })

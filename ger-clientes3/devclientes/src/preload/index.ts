@@ -36,7 +36,10 @@ const api = {
   fetchCustomerByID: (docID: string): Promise<Customer> => ipcRenderer.invoke("fetch-customer-id",docID),
 
   //Ponte para remoção de cliente
-  deleteCustomer: (docID: string) => ipcRenderer.invoke("delete-customer", docID)
+  deleteCustomer: (docID: string) => ipcRenderer.invoke("delete-customer", docID),
+
+  //Ponte para obtenção da versão do app
+  getVersionApp: () => ipcRenderer.invoke("app-version")
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to
