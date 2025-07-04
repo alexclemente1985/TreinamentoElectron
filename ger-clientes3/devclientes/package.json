@@ -1,7 +1,7 @@
 {
   "name": "devclientes",
   "productName": "Dev Clientes",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Sistema gerenciador de clientes",
   "main": "./out/main/index.js",
   "author": "acpprojects",
