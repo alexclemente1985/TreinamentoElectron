@@ -1,0 +1,24 @@
+{
+  "name": "videoinfo",
+  "version": "1.0.0",
+  "description": "Teste de aplicação Electron",
+  "main": "index.js",
+  "scripts": {
+    "electron": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alexclemente1985/TreinamentoElectron.git"
+  },
+  "author": "Alexandre Pinheiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexclemente1985/TreinamentoElectron/issues"
+  },
+  "homepage": "https://github.com/alexclemente1985/TreinamentoElectron#readme",
+  "dependencies": {
+    "electron": "^37.2.1",
+    "fluent-ffmpeg": "^2.1.3"
+  }
+}
